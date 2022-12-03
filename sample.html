@@ -1,0 +1,37 @@
+
+<!-- WebView側からUnityクライアントへの情報受け渡しサンプル -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+  Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<script language="javascript" type="text/javascript">
+
+    /*
+        WebView側からUnityへの情報呼び出し関数
+        msgで指定した任意の文字列をUnity側へ渡す 
+        Unityクライアント上でWebViewを表示した場合、Unityオブジェクトが定義され
+        Unity.call(msg)でmsgがUnity側へ通知される
+    */
+    function UnityCall(msg) {
+       if (typeof Unity === "undefined") {
+           alert("Unity is Undefined msg:" + msg);
+       } else {
+           Unity.call(msg);
+       }
+    }    
+
+    // WebView側からUnityクライアントへの情報呼び出し関数
+    function OnButtonClick() {
+        // 文字列"end"をUnity側へ渡す
+        UnityCall("end");
+    }
+
+</script>
+</head>
+<body>
+<input type="button" value="end" onclick="OnButtonClick();"/><br />
+</body>
+
+
